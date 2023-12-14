@@ -19,6 +19,32 @@
 
 #include "fmt/core.h"
 
+enum class RockType {
+    EMPTY,
+    ROUND,
+    CUBE
+};
+
+enum class TiltDirection {
+    NORTH,
+    EAST,
+    SOUTH,
+    WEST
+};
+
+
+constexpr const uint64_t CYCLES = 1'000'000'000;
+extern const std::unordered_map<char, RockType> rock_type_map;
+extern const std::unordered_map<RockType, char> rock_type_map_reverse;
+
+using Row = std::vector<RockType>;
+using Grid = std::vector<Row>;
+
+void tilt_grid_north(Grid &grid, TiltDirection direction);
+void tilt_grid_south(Grid &grid, TiltDirection direction);
+void tilt_grid_west(Grid &grid, TiltDirection direction);
+void tilt_grid_east(Grid &grid, TiltDirection direction);
+
 int puzzle_sample_1(const std::string &base_file_path);
 
 int puzzle_sample_2(const std::string &base_file_path);
